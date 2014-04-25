@@ -439,7 +439,7 @@ public class MarkdownProcessorLineBreaks {
                 "(" +
                 "(" +
                 "[ ]{0," + lessThanTab + "}" +
-                "((?:[-+*]|\\d+[.]))" + // $3 is first list item marker
+                "((?:[-+*]))" + // $3 is first list item marker
                 "[ ]+" +
                 ")" +
                 "(?s:.+?)" +
@@ -449,7 +449,7 @@ public class MarkdownProcessorLineBreaks {
                 "\\n{2,}" +
                 "(?=\\S)" + // If not end of input, then a new para
                 "(?![ ]*" +
-                "(?:[-+*]|\\d+[.])" +
+                "(?:[-+*])" +
                 "[ ]+" +
                 ")" + // negative lookahead for another list marker
                 ")" +
@@ -554,9 +554,9 @@ public class MarkdownProcessorLineBreaks {
         list = replaceAll(list, "\\n{2,}\\z", "\n");
 
         Pattern p = Pattern.compile("(\\n)?" +
-                "^([ \\t]*)([-+*]|\\d+[.])[ ]+" +
+                "^([ \\t]*)([-+*])[ ]+" +
                 "((?s:.+?)(\\n{1,2}))" +
-                "(?=\\n*(\\z|\\2([-+\\*]|\\d+[.])[ \\t]+))",
+                "(?=\\n*(\\z|\\2([-+\\*])[ \\t]+))",
                 Pattern.MULTILINE);
         list = replaceAll(list, p, new Replacement() {
             public String replacement(Matcher m) {
