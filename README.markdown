@@ -18,9 +18,7 @@ Which stardard markdown will change to April 1st.
 This fork hasn't changed any of the existing files, so the jar file can be used interchangably with the original.
 But we added a class so that you have the option of:
 
-    public static String markdown(String string) {
-        return (new MarkdownProcessorLineBreaks()).markdown(string);
-    }
+    (new MarkdownProcessorLineBreaks()).markdown(string);
 
 keith@youcanbook.me
 
